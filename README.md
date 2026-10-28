@@ -1,115 +1,104 @@
-# house-price-prediction-regression
-Predicting housing prices using multiple linear regression with model evaluation (MAE, R²) and feature analysis
-# House Price Prediction Using Linear Regression
+# Multiple Linear Regression – House Price Prediction
 
-## Overview
-This project builds a multiple linear regression model to predict housing prices based on various features such as location, income, and housing characteristics.
+## Project Overview
 
-The goal is to understand how different factors influence house prices and evaluate the model’s predictive performance.
+This project applies Multiple Linear Regression to predict median house values using several housing characteristics.
 
----
+The objective is to understand relationships between multiple predictor variables and house prices while developing practical skills in regression modeling and performance evaluation.
 
 ## Dataset
-The dataset contains 20,000+ housing records with features including:
 
-- Longitude & Latitude
-- Housing Median Age
-- Total Rooms & Bedrooms
-- Population & Households
-- Median Income
-- Median House Value (target variable)
-- Ocean Proximity (categorical)
+**housing.csv**
 
----
+The dataset contains housing information, including:
+
+- Longitude and latitude
+- Housing median age
+- Total rooms and bedrooms
+- Population
+- Households
+- Median income
+- Median house value
+
+**Target Variable:** median_house_value
 
 ## Tools & Libraries
-- Python
-- pandas
-- numpy
-- scikit-learn
-- matplotlib
-- seaborn
 
----
+Python | Pandas | Matplotlib | Seaborn | Scikit-learn
 
-## Data Preparation
+## Methodology
 
-- Checked for missing values
-- Removed null values using `dropna()`
-- Dropped categorical column (`ocean_proximity`) since it requires encoding
-- Selected only numerical features for modeling
+### 1. Data Exploration
 
----
+- Loaded and inspected the housing dataset.
+- Examined feature distributions and relationships.
+- Investigated missing values and housing price patterns.
 
-## Feature Selection
+### 2. Data Preparation
 
-**Predictors (X):**
-- longitude
-- latitude
-- housing_median_age
-- total_rooms
-- total_bedrooms
-- population
-- households
-- median_income
+- Selected eight numerical predictor variables.
+- Excluded the categorical ocean_proximity column from the regression features.
+- Explored the effect of removing observations with median house values of $500,000.
+- Prepared the dataset for modeling.
 
-**Target (y):**
-- median_house_value
+### 3. Train-Test Split
 
----
+Divided the data into:
 
-## Model Building
+- 80% training data
+- 20% testing data
 
-- Split data into training (80%) and testing (20%)
-- Used `LinearRegression` from scikit-learn
-- Trained model on training dataset
+Used random_state = 42 for reproducibility.
 
----
+### 4. Multiple Linear Regression
 
-## Model Interpretation
+Trained a Linear Regression model using Scikit-learn.
 
-- Extracted coefficients to understand feature impact
-- Identified how each variable influences house price
-- Calculated intercept and feature weights
+Examined:
 
----
+- Model intercept
+- Regression coefficients
+- Training predictions
+- Testing predictions
 
-## Evaluation Metrics
+### 5. Model Evaluation
 
-- **Mean Absolute Error (MAE):** ~51,372  
-- **R-squared (R²):** 0.64  
+Evaluated regression performance using:
 
-### Interpretation:
-- The model explains ~64% of the variance in housing prices
-- Indicates moderate predictive performance with room for improvement
+**Mean Absolute Error (MAE):** Measures the average absolute difference between actual and predicted values.
 
----
+**R² Score:** Measures the proportion of variation in house prices explained by the model.
 
-## Results
+Compared training and testing performance to assess generalization.
 
-- Generated predictions for housing prices
-- Compared actual vs predicted values
-- Observed differences to evaluate model accuracy
+### 6. Data Visualization
 
----
+Created scatter plots comparing actual and predicted house values.
 
-## Key Insights
+Used a reference line to visualize how closely predictions aligned with actual observations.
 
-- Median income has a strong positive impact on house prices  
-- Location (latitude/longitude) significantly influences value  
-- Some features contribute less and may be refined  
+## Key Takeaways
 
----
+- Multiple Linear Regression uses several input features to predict a continuous target.
+- Regression coefficients help explain the relationship between predictors and the target.
+- MAE and R² provide different perspectives on model performance.
+- Comparing actual and predicted values helps identify prediction errors.
+- Data preparation and the treatment of extreme values can influence model results.
+
+## Learning Outcomes
+
+- Multiple Linear Regression
+- Feature selection
+- Data cleaning
+- Model training and prediction
+- Regression coefficients and intercepts
+- MAE and R² evaluation
+- Actual versus predicted visualizations
 
 ## Future Improvements
 
-- Apply feature scaling (StandardScaler)
-- Encode categorical variables (ocean_proximity)
-- Try advanced models (Random Forest, Gradient Boosting)
-- Perform feature engineering
-
----
-
-## Conclusion
-
-Linear regression provides a solid baseline model for predicting housing prices and understanding feature relationships, but more advanced techniques could improve performance.
+- Encode categorical variables such as ocean_proximity.
+- Evaluate multicollinearity.
+- Explore feature scaling where appropriate.
+- Compare regression performance before and after removing capped house values.
+- Explore Ridge and Lasso Regression.
